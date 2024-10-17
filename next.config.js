@@ -8,7 +8,6 @@ const nextConfig = withStoreConfig({
   features: store.features,
   reactStrictMode: true,
   images: {
-    domains:
     remotePatterns: [
       {
         protocol: "http",
@@ -28,7 +27,7 @@ const nextConfig = withStoreConfig({
       },
       {
         protocol: "https",
-        hostname: "packpulse-bucket.ams3.digitaloceanspaces.com",
+        hostname: "packpulse-bucket.ams3.digitaloceanspaces.com", // Remove 'https://' prefix
       },
     ],
   },
