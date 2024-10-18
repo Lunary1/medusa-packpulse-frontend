@@ -4,13 +4,16 @@ import { listRegions } from "@lib/data"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import CartButton from "@modules/layout/components/cart-button"
 import SideMenu from "@modules/layout/components/side-menu"
+import Image from "next/image"
+import { Image as MedusaImage } from "@medusajs/medusa"
+import { Container } from "@medusajs/ui"
 
 export default async function Nav() {
   const regions = await listRegions().then((regions) => regions)
 
   return (
     <div className="sticky top-0 inset-x-0 z-50 group">
-      <header className="relative h-16 mx-auto border-b duration-200 bg-white border-ui-border-base">
+      <header className="relative h-16 mx-auto border-b duration-200 bg-white">
         <nav className="content-container txt-xsmall-plus text-ui-fg-subtle flex items-center justify-between w-full h-full text-small-regular">
           <div className="flex-1 basis-0 h-full flex items-center">
             <div className="h-full">
@@ -24,7 +27,18 @@ export default async function Nav() {
               className="txt-compact-xlarge-plus hover:text-ui-fg-base uppercase"
               data-testid="nav-store-link"
             >
-              PackPulse
+              <Container className="relative w-full overflow-hidden">
+                <Image
+                  src="https://packpulse-bucket.ams3.digitaloceanspaces.com/6c933b26-5c5e-479c-9584-e1f57ced82e2.webp"
+                  className="absolute inset-0 rounded-rounded"
+                  alt={`Product image`}
+                  fill
+                  sizes="(max-width: 576px) 280px, (max-width: 768px) 360px, (max-width: 992px) 480px, 800px"
+                  style={{
+                    objectFit: "cover",
+                  }}
+                />
+              </Container>
             </LocalizedClientLink>
           </div>
 
